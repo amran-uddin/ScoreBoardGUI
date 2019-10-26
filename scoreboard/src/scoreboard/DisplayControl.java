@@ -49,8 +49,9 @@ public class DisplayControl {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(50, 50, 1500, 900);
-		frame.setResizable(true);
+		frame.setTitle("Score Board Control");
+		frame.setBounds(50, 50, 1000, 650);
+		frame.setResizable(false);
 		SpringLayout springLayout = new SpringLayout();
 		frame.getContentPane().setLayout(springLayout);
 		
@@ -79,23 +80,23 @@ public class DisplayControl {
 		frame.getContentPane().add(Team2Point);
 		
 		JButton team1ThreePoint = new JButton("+3");
+		springLayout.putConstraint(SpringLayout.NORTH, team1ThreePoint, 0, SpringLayout.NORTH, Team1Point);
+		springLayout.putConstraint(SpringLayout.WEST, team1ThreePoint, 40, SpringLayout.WEST, frame.getContentPane());
 		frame.getContentPane().add(team1ThreePoint);
 		
 		JButton team1TwoPoint = new JButton("+2");
-		springLayout.putConstraint(SpringLayout.EAST, team1TwoPoint, -24, SpringLayout.WEST, Team1Point);
-		springLayout.putConstraint(SpringLayout.SOUTH, team1ThreePoint, -6, SpringLayout.NORTH, team1TwoPoint);
-		springLayout.putConstraint(SpringLayout.EAST, team1ThreePoint, 0, SpringLayout.EAST, team1TwoPoint);
+		springLayout.putConstraint(SpringLayout.WEST, team1TwoPoint, 0, SpringLayout.WEST, team1ThreePoint);
 		frame.getContentPane().add(team1TwoPoint);
 		
 		JButton team1OnePoint = new JButton("+1");
 		springLayout.putConstraint(SpringLayout.NORTH, team1OnePoint, 165, SpringLayout.NORTH, frame.getContentPane());
-		springLayout.putConstraint(SpringLayout.EAST, team1OnePoint, -24, SpringLayout.WEST, Team1Point);
 		springLayout.putConstraint(SpringLayout.SOUTH, team1TwoPoint, -6, SpringLayout.NORTH, team1OnePoint);
+		springLayout.putConstraint(SpringLayout.WEST, team1OnePoint, 0, SpringLayout.WEST, team1ThreePoint);
 		frame.getContentPane().add(team1OnePoint);
 		
 		JButton team2ThreePoint = new JButton("+3");
-		springLayout.putConstraint(SpringLayout.NORTH, team2ThreePoint, 6, SpringLayout.SOUTH, Team2Label);
-		springLayout.putConstraint(SpringLayout.WEST, team2ThreePoint, 38, SpringLayout.EAST, Team2Point);
+		springLayout.putConstraint(SpringLayout.NORTH, team2ThreePoint, 0, SpringLayout.NORTH, Team1Point);
+		springLayout.putConstraint(SpringLayout.EAST, team2ThreePoint, -53, SpringLayout.EAST, frame.getContentPane());
 		frame.getContentPane().add(team2ThreePoint);
 		
 		JButton team2TwoPoint = new JButton("+2");
@@ -105,7 +106,7 @@ public class DisplayControl {
 		
 		JButton team2OnePoint = new JButton("+1");
 		springLayout.putConstraint(SpringLayout.NORTH, team2OnePoint, 0, SpringLayout.NORTH, team1OnePoint);
-		springLayout.putConstraint(SpringLayout.WEST, team2OnePoint, 0, SpringLayout.WEST, team2ThreePoint);
+		springLayout.putConstraint(SpringLayout.EAST, team2OnePoint, 0, SpringLayout.EAST, team2ThreePoint);
 		frame.getContentPane().add(team2OnePoint);
 		
 		JButton team1MinusOnePoint = new JButton("-1");
@@ -156,31 +157,31 @@ public class DisplayControl {
 		springLayout.putConstraint(SpringLayout.WEST, shotClockReset, 0, SpringLayout.WEST, shotClockLabel);
 		frame.getContentPane().add(shotClockReset);
 		
-		JButton btnGostop = new JButton("Go/Stop");
+		JButton btnGostop = new JButton("Start/Stop");
 		springLayout.putConstraint(SpringLayout.NORTH, btnGostop, 250, SpringLayout.NORTH, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.WEST, btnGostop, 6, SpringLayout.EAST, timeLabel);
 		frame.getContentPane().add(btnGostop);
 		
 		JLabel lblTimeoutteam = new JLabel("Timeouts");
 		springLayout.putConstraint(SpringLayout.NORTH, lblTimeoutteam, 200, SpringLayout.SOUTH, team1MinusOnePoint);
-		springLayout.putConstraint(SpringLayout.WEST, lblTimeoutteam, 0, SpringLayout.WEST, Team1Point);
 		lblTimeoutteam.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		frame.getContentPane().add(lblTimeoutteam);
 		
 		JLabel team = new JLabel("Timeouts");
 		springLayout.putConstraint(SpringLayout.NORTH, team, 0, SpringLayout.NORTH, lblTimeoutteam);
-		springLayout.putConstraint(SpringLayout.EAST, team, 0, SpringLayout.EAST, Team2Point);
 		team.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		frame.getContentPane().add(team);
 		
 		JLabel team1TimeoutLabel = new JLabel(String.valueOf(t1.getTimeouts()));
 		springLayout.putConstraint(SpringLayout.NORTH, team1TimeoutLabel, 6, SpringLayout.SOUTH, lblTimeoutteam);
+		springLayout.putConstraint(SpringLayout.EAST, lblTimeoutteam, 0, SpringLayout.EAST, team1TimeoutLabel);
 		team1TimeoutLabel.setFont(new Font("Tahoma", Font.PLAIN, 40));
 		springLayout.putConstraint(SpringLayout.WEST, team1TimeoutLabel, 0, SpringLayout.WEST, team1MinusOnePoint);
 		frame.getContentPane().add(team1TimeoutLabel);
 		
 		JLabel team2TimeoutLabel = new JLabel(String.valueOf(t2.getTimeouts()));
-		springLayout.putConstraint(SpringLayout.NORTH, team2TimeoutLabel, 6, SpringLayout.SOUTH, team);
+		springLayout.putConstraint(SpringLayout.WEST, team, 0, SpringLayout.WEST, team2TimeoutLabel);
+		springLayout.putConstraint(SpringLayout.NORTH, team2TimeoutLabel, 243, SpringLayout.SOUTH, team2MinusOnePoint);
 		team2TimeoutLabel.setFont(new Font("Tahoma", Font.PLAIN, 40));
 		springLayout.putConstraint(SpringLayout.EAST, team2TimeoutLabel, 0, SpringLayout.EAST, team2MinusOnePoint);
 		frame.getContentPane().add(team2TimeoutLabel);
@@ -204,6 +205,24 @@ public class DisplayControl {
 		springLayout.putConstraint(SpringLayout.WEST, team2MinusTimeout, 0, SpringLayout.WEST, Team2Label);
 		springLayout.putConstraint(SpringLayout.SOUTH, team2MinusTimeout, 0, SpringLayout.SOUTH, team1MinusTimeout);
 		frame.getContentPane().add(team2MinusTimeout);
+		
+		JLabel lblAmranyahoocom = new JLabel("amran1294@yahoo.com");
+		lblAmranyahoocom.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		springLayout.putConstraint(SpringLayout.WEST, lblAmranyahoocom, 10, SpringLayout.WEST, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.SOUTH, lblAmranyahoocom, -10, SpringLayout.SOUTH, frame.getContentPane());
+		frame.getContentPane().add(lblAmranyahoocom);
+		
+		JLabel lblNewLabel = new JLabel("Questions?");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		springLayout.putConstraint(SpringLayout.WEST, lblNewLabel, 10, SpringLayout.WEST, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.SOUTH, lblNewLabel, -6, SpringLayout.NORTH, lblAmranyahoocom);
+		frame.getContentPane().add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("GitHub: amran-uddin");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		springLayout.putConstraint(SpringLayout.WEST, lblNewLabel_1, 0, SpringLayout.WEST, lblAmranyahoocom);
+		springLayout.putConstraint(SpringLayout.SOUTH, lblNewLabel_1, -6, SpringLayout.NORTH, lblNewLabel);
+		frame.getContentPane().add(lblNewLabel_1);
 		
 		
 		//////////////////// BUTTON FUNCTIONS ///////////////////
